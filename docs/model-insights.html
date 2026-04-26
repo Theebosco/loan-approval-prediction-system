@@ -4,103 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Model Insights</title>
+  <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    /* DARK MODE ONLY FOR THIS PAGE */
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f0c;
-      color: #00b050;
-    }
-
-    .navbar {
-      background: #009a44;
-      color: white;
-      padding: 18px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar h1 {
-      margin: 0;
-      color: white;
-      font-size: 32px;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 30px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .card {
-      background: #0b0f0c;
-      padding: 28px;
-      border-radius: 18px;
-      border: 2px solid #006b3f;
-      margin-bottom: 25px;
-    }
-
-    h2 {
-      color: #00b050;
-    }
-
-    p, span, strong {
-      color: #22e083;
-    }
-
-    canvas {
-      background: #0b0f0c;
-    }
-
-    .confusion-matrix {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      max-width: 500px;
-      margin: 20px auto;
-    }
-
-    .matrix-box {
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-      border: 2px solid #006b3f;
-      background: #0b0f0c;
-    }
-
-    .matrix-box span {
-      display: block;
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .correct {
-      background: #102618;
-    }
-
-    .wrong {
-      background: #2a0f0f;
-    }
-  </style>
 </head>
-
 <body>
 
 <nav class="navbar">
   <h1>Model Insights</h1>
-  <a href="index.html">Home</a>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
 </nav>
 
 <main class="container">
@@ -113,7 +27,7 @@
 
   <section class="card">
     <h2>Feature Importance</h2>
-    <canvas id="featureChart"></canvas>
+    <canvas id="featureImportanceChart"></canvas>
   </section>
 
   <section class="card">
@@ -144,44 +58,6 @@
 
 </main>
 
-<script>
-  const data = [
-    { name: "Credit History", value: 0.42 },
-    { name: "Applicant Income", value: 0.21 },
-    { name: "Loan Amount", value: 0.16 },
-    { name: "Co-applicant Income", value: 0.09 },
-    { name: "Education", value: 0.07 },
-    { name: "Employment Status", value: 0.05 }
-  ];
-
-  new Chart(document.getElementById("featureChart"), {
-    type: "bar",
-    data: {
-      labels: data.map(d => d.name),
-      datasets: [{
-        label: "Importance",
-        data: data.map(d => d.value),
-        backgroundColor: "#00b050"
-      }]
-    },
-    options: {
-      indexAxis: "y",
-      plugins: {
-        legend: {
-          labels: { color: "#22e083" }
-        }
-      },
-      scales: {
-        x: {
-          ticks: { color: "#22e083" }
-        },
-        y: {
-          ticks: { color: "#22e083" }
-        }
-      }
-    }
-  });
-</script>
-
+<script src="js/model-insights.js"></script>
 </body>
 </html>
