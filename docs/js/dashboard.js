@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/api/dashboard";
+const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
+const API_URL = `${API_BASE_URL}/api/dashboard`;
 
 const token = localStorage.getItem("token");
 
@@ -20,6 +21,7 @@ if (logoutBtn) {
 async function loadDashboard() {
   try {
     const response = await fetch(API_URL, {
+      method: "GET",
       headers: {
         "Authorization": "Bearer " + token
       }
@@ -47,14 +49,16 @@ async function loadDashboard() {
             data: [
               data.creditHistoryChart.goodCredit.approved,
               data.creditHistoryChart.badCredit.approved
-            ]
+            ],
+            backgroundColor: "#00b050"
           },
           {
             label: "Rejected",
             data: [
               data.creditHistoryChart.goodCredit.rejected,
               data.creditHistoryChart.badCredit.rejected
-            ]
+            ],
+            backgroundColor: "#ff4d4d"
           }
         ]
       }
@@ -69,7 +73,8 @@ async function loadDashboard() {
             data: [
               data.approvalDistribution.approved,
               data.approvalDistribution.rejected
-            ]
+            ],
+            backgroundColor: ["#00b050", "#ff4d4d"]
           }
         ]
       }
@@ -78,7 +83,10 @@ async function loadDashboard() {
   } catch (error) {
     alert(error.message);
 
-    if (error.message.includes("Unauthorized")) {
+    if (
+      error.message.includes("Unauthorized") ||
+      error.message.includes("Please login")
+    ) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "login.html";

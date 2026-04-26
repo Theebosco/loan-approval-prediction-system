@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/api/predict";
+const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
+const API_URL = `${API_BASE_URL}/api/predict`;
 
 const token = localStorage.getItem("token");
 
@@ -22,6 +23,9 @@ const message = document.getElementById("message");
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
+
+  message.style.color = "#00b050";
+  message.textContent = "Submitting application...";
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
@@ -53,6 +57,11 @@ form.addEventListener("submit", async event => {
 
   } catch (error) {
     message.style.color = "red";
-    message.textContent = error.message;
+
+    if (error.message === "Failed to fetch") {
+      message.textContent = "Cannot connect to backend. Check Railway backend and MongoDB connection.";
+    } else {
+      message.textContent = error.message;
+    }
   }
 });
