@@ -1,16 +1,16 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
 
 const form = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
 
   message.style.color = "#00b050";
   message.textContent = "Logging in...";
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/login`, {
@@ -33,17 +33,12 @@ form.addEventListener("submit", async e => {
     message.style.color = "#00b050";
     message.textContent = "Login successful. Redirecting to dashboard...";
 
-    setTimeout(() => {
+    setTimeout(function () {
       window.location.href = "dashboard.html";
     }, 1000);
 
   } catch (error) {
     message.style.color = "red";
-
-    if (error.message === "Failed to fetch") {
-      message.textContent = "Cannot connect to backend. Make sure backend is running on http://localhost:5000";
-    } else {
-      message.textContent = error.message;
-    }
+    message.textContent = error.message || "Something went wrong";
   }
 });
