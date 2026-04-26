@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
 
 const form = document.getElementById("loginForm");
 const message = document.getElementById("message");

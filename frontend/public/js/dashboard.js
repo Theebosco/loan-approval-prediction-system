@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/dashboard";
+const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
 
 const token = localStorage.getItem("token");
 
