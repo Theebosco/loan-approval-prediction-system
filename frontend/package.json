@@ -1,0 +1,17 @@
+{
+  "name": "loan-approval-prediction-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Loan Approval Prediction System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "loan",
+    "approval",
+    "prediction",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC"
+}
