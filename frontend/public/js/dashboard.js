@@ -1,4 +1,5 @@
 const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
+const API_URL = `${API_BASE_URL}/api/dashboard`;
 
 const token = localStorage.getItem("token");
 
@@ -76,9 +77,10 @@ async function loadDashboard() {
     });
 
   } catch (error) {
-    alert(error.message);
+    const message = error.message || "Unable to load dashboard right now.";
+    alert(message);
 
-    if (error.message.includes("Unauthorized")) {
+    if (message.includes("Unauthorized") || message.includes("login")) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "login.html";

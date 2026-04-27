@@ -4,51 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartLoan AI</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="min-h-screen bg-slate-50 text-slate-900 relative overflow-x-hidden">
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-32 -left-40 h-96 w-96 rounded-full bg-rose-200/60 blur-3xl"></div>
+    <div class="absolute top-1/3 right-0 h-96 w-96 rounded-full bg-sky-200/70 blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-amber-200/60 blur-3xl"></div>
+  </div>
 
-  <nav class="navbar">
-    <h1>SmartLoan AI</h1>
-    <div>
-      <a href="login.html">Login</a>
-      <a href="register.html" style="margin-left: 15px;">Register</a>
-      <a href="dashboard.html" style="margin-left: 15px;">Dashboard</a>
-      <a href="model-insights.html" style="margin-left: 15px;">Model Insights</a>
+  <nav data-nav class="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+      <div class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-500">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 14l4-4 4 4 5-7" />
+          </svg>
+        </span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-rose-500">SmartLoan AI</p>
+          <h1 class="text-lg font-semibold text-slate-900">Loan Approval Prediction</h1>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="login.html" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-500">Login</a>
+        <a href="register.html" class="rounded-full bg-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-rose-500/20 transition hover:-translate-y-0.5 hover:bg-rose-400">Register</a>
+        <a href="dashboard.html" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-500">Dashboard</a>
+        <a href="model-insights.html" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-500">Model Insights</a>
+      </div>
     </div>
   </nav>
 
-  <main class="landing-page">
-    <section class="hero-card">
-      <h2>SmartLoan AI</h2>
-      <p class="subtitle">Loan Approval Prediction System</p>
-
-      <div class="problem-box">
-        Manual loan processing is slow. Our AI predicts approvals in seconds.
+  <main class="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14">
+    <section class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]" data-animate>
+      <div class="rounded-3xl border border-slate-200/70 bg-white/80 p-8 shadow-2xl shadow-rose-200/60">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-rose-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-rose-500">
+            <span class="h-2 w-2 rounded-full bg-rose-400"></span>
+            Smart decisions
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+            Secure access
+          </span>
+        </div>
+        <h2 class="mt-6 text-3xl font-semibold leading-tight text-slate-900 md:text-4xl">Get a clear loan decision without the long wait.</h2>
+        <p class="mt-4 text-base text-slate-600">SmartLoan streamlines loan evaluation using a transparent rule-based engine that reviews credit history, income stability, and loan size to deliver a fast decision.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <a href="register.html" class="rounded-2xl bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-500/30 transition hover:-translate-y-1 hover:bg-rose-400">Start an Application</a>
+          <a href="predictor.html" class="rounded-2xl border border-rose-200 px-6 py-3 text-sm font-semibold text-rose-500 transition hover:-translate-y-1 hover:border-rose-300">Check Eligibility</a>
+        </div>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-rose-100 bg-rose-50/60 p-4">
+            <p class="text-xs uppercase tracking-[0.25em] text-rose-400">Accuracy</p>
+            <p class="mt-2 text-2xl font-semibold text-slate-900">82%</p>
+          </div>
+          <div class="rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
+            <p class="text-xs uppercase tracking-[0.25em] text-sky-400">Decision Time</p>
+            <p class="mt-2 text-2xl font-semibold text-slate-900">&lt; 10s</p>
+          </div>
+          <div class="rounded-2xl border border-amber-100 bg-amber-50/70 p-4">
+            <p class="text-xs uppercase tracking-[0.25em] text-amber-400">Risk Signals</p>
+            <p class="mt-2 text-2xl font-semibold text-slate-900">6 Features</p>
+          </div>
+        </div>
       </div>
 
-      <p>
-        Register or login to check your loan eligibility.
-      </p>
+      <div class="grid gap-4">
+        <div class="rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-8">
+          <h3 class="text-lg font-semibold text-slate-900">Fast response. Secure access.</h3>
+          <p class="mt-3 text-sm text-slate-600">Every interaction is protected with JWT authentication, steady API performance, and clear audit trails for reviewers.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full border border-rose-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-rose-500">Real-time</span>
+            <span class="rounded-full border border-sky-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-500">Verified</span>
+            <span class="rounded-full border border-amber-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-amber-500">Policy-ready</span>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-slate-200/70 bg-white/80 p-8" data-animate>
+          <h3 class="text-lg font-semibold text-slate-900">System Snapshot</h3>
+          <div class="mt-6 grid gap-4">
+            <div class="flex items-center justify-between text-sm text-slate-600">
+              <span>Architecture</span>
+              <span class="font-semibold text-rose-500">Client-Server</span>
+            </div>
+            <div class="flex items-center justify-between text-sm text-slate-600">
+              <span>Backend</span>
+              <span class="font-semibold text-rose-500">Node.js + Railway</span>
+            </div>
+            <div class="flex items-center justify-between text-sm text-slate-600">
+              <span>Storage</span>
+              <span class="font-semibold text-rose-500">MongoDB Atlas</span>
+            </div>
+            <div class="flex items-center justify-between text-sm text-slate-600">
+              <span>Prediction</span>
+              <span class="font-semibold text-rose-500">Rule-Based Engine</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="features">
-      <div class="feature-card">
-        <h3>⚡ Fast</h3>
-        <p>Get quick loan eligibility results.</p>
+    <section class="grid gap-6 md:grid-cols-3" data-animate>
+      <div class="rounded-2xl border border-slate-200/70 bg-white/80 p-6 transition hover:-translate-y-1 hover:border-rose-200">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+          </svg>
+        </div>
+        <h3 class="mt-4 text-lg font-semibold text-slate-900">Instant Decisions</h3>
+  <p class="mt-2 text-sm text-slate-600">Applicants receive immediate approval feedback with a clear risk score.</p>
       </div>
-
-      <div class="feature-card">
-        <h3>📊 Data-Driven</h3>
-        <p>Uses applicant data to predict approval.</p>
+      <div class="rounded-2xl border border-slate-200/70 bg-white/80 p-6 transition hover:-translate-y-1 hover:border-sky-200">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-500">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+        </div>
+        <h3 class="mt-4 text-lg font-semibold text-slate-900">Transparent Insights</h3>
+  <p class="mt-2 text-sm text-slate-600">Feature importance and confusion matrices keep decisions explainable.</p>
       </div>
+      <div class="rounded-2xl border border-slate-200/70 bg-white/80 p-6 transition hover:-translate-y-1 hover:border-amber-200">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 text-amber-500">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 2.21-1.79 4-4 4S4 13.21 4 11 5.79 7 8 7s4 1.79 4 4zm0 0c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4-4 1.79-4 4z" />
+          </svg>
+        </div>
+        <h3 class="mt-4 text-lg font-semibold text-slate-900">Bias Reduction</h3>
+  <p class="mt-2 text-sm text-slate-600">Rule-based logic reduces inconsistency and human bias in approvals.</p>
+      </div>
+    </section>
 
-      <div class="feature-card">
-        <h3>🔒 Secure</h3>
-        <p>Your information is handled safely.</p>
+    <section class="rounded-3xl border border-slate-200/70 bg-white/80 p-8" data-animate>
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div>
+          <h3 class="text-xl font-semibold text-slate-900">How it works</h3>
+          <p class="mt-2 text-sm text-slate-600">A guided flow that turns raw data into a fair, auditable decision.</p>
+        </div>
+        <div class="rounded-2xl border border-rose-100 bg-rose-50/60 p-5">
+          <p class="text-xs uppercase tracking-[0.2em] text-rose-400">Step 01</p>
+          <h4 class="mt-2 text-lg font-semibold text-slate-900">Capture Applicant Data</h4>
+          <p class="mt-2 text-sm text-slate-600">Income, employment, and credit history are validated upfront.</p>
+        </div>
+        <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-5">
+          <p class="text-xs uppercase tracking-[0.2em] text-sky-400">Step 02</p>
+          <h4 class="mt-2 text-lg font-semibold text-slate-900">Predict &amp; Score</h4>
+          <p class="mt-2 text-sm text-slate-600">The model returns approval status with a risk score.</p>
+        </div>
+        <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-5">
+          <p class="text-xs uppercase tracking-[0.2em] text-amber-400">Step 03</p>
+          <h4 class="mt-2 text-lg font-semibold text-slate-900">Review Transparency</h4>
+          <p class="mt-2 text-sm text-slate-600">Dashboards and insights guide final review decisions.</p>
+        </div>
       </div>
     </section>
   </main>
 
+  <script src="js/ui.js"></script>
 </body>
 </html>

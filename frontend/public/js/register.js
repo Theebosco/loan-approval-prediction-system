@@ -9,7 +9,7 @@ form.addEventListener("submit", async e => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  message.style.color = "#00b050";
+  message.style.color = "#d97706";
   message.textContent = "Creating account...";
 
   try {
@@ -27,7 +27,7 @@ form.addEventListener("submit", async e => {
       throw new Error(result.message || "Registration failed");
     }
 
-    message.style.color = "#00b050";
+  message.style.color = "#047857";
     message.textContent = "Registration successful. Redirecting to login...";
 
     setTimeout(() => {
@@ -35,10 +35,10 @@ form.addEventListener("submit", async e => {
     }, 1000);
 
   } catch (error) {
-    message.style.color = "red";
+    message.style.color = "#b42318";
 
     if (error.message === "Failed to fetch") {
-      message.textContent = "Cannot connect to backend. Make sure backend is running on http://localhost:5000";
+      message.textContent = "We couldn't reach the server. Please try again in a moment.";
     } else {
       message.textContent = error.message;
     }

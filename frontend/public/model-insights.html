@@ -4,147 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Model Insights</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    /* DARK MODE ONLY FOR THIS PAGE */
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f0c;
-      color: #00b050;
-    }
-
-    .navbar {
-      background: #009a44;
-      color: white;
-      padding: 18px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar h1 {
-      margin: 0;
-      color: white;
-      font-size: 32px;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 30px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .card {
-      background: #0b0f0c;
-      padding: 28px;
-      border-radius: 18px;
-      border: 2px solid #006b3f;
-      margin-bottom: 25px;
-    }
-
-    h2 {
-      color: #00b050;
-    }
-
-    p, span, strong {
-      color: #22e083;
-    }
-
-    canvas {
-      background: #0b0f0c;
-    }
-
-    .confusion-matrix {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      max-width: 500px;
-      margin: 20px auto;
-    }
-
-    .matrix-box {
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-      border: 2px solid #006b3f;
-      background: #0b0f0c;
-    }
-
-    .matrix-box span {
-      display: block;
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .correct {
-      background: #102618;
-    }
-
-    .wrong {
-      background: #2a0f0f;
-    }
-  </style>
 </head>
 
-<body>
+<body class="min-h-screen bg-slate-50 text-slate-900 relative overflow-x-hidden">
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-32 -left-40 h-96 w-96 rounded-full bg-rose-200/70 blur-3xl"></div>
+    <div class="absolute top-1/3 right-0 h-96 w-96 rounded-full bg-sky-200/70 blur-3xl"></div>
+  </div>
 
-<nav class="navbar">
-  <h1>Model Insights</h1>
-  <a href="index.html">Home</a>
-</nav>
-
-<main class="container">
-
-  <section class="card">
-    <h2>Technical Proof</h2>
-    <p><strong>Model Name:</strong> Random Forest Classifier</p>
-    <p><strong>Accuracy:</strong> 82%</p>
-  </section>
-
-  <section class="card">
-    <h2>Feature Importance</h2>
-    <canvas id="featureChart"></canvas>
-  </section>
-
-  <section class="card">
-    <h2>Confusion Matrix</h2>
-
-    <div class="confusion-matrix">
-      <div class="matrix-box correct">
-        <strong>True Approved</strong>
-        <span>92</span>
+  <nav data-nav class="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+      <div class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-500">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6m-3 0v4m-7 2h14M5 9l1.5 12h11L19 9" />
+          </svg>
+        </span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-rose-500">SmartLoan AI</p>
+          <h1 class="text-lg font-semibold text-slate-900">Model Insights</h1>
+        </div>
       </div>
-
-      <div class="matrix-box wrong">
-        <strong>False Approved</strong>
-        <span>14</span>
-      </div>
-
-      <div class="matrix-box wrong">
-        <strong>False Rejected</strong>
-        <span>18</span>
-      </div>
-
-      <div class="matrix-box correct">
-        <strong>True Rejected</strong>
-        <span>65</span>
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="index.html" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-500">Home</a>
+        <a href="dashboard.html" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-500">Dashboard</a>
       </div>
     </div>
-  </section>
+  </nav>
 
-</main>
+  <main class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12">
+    <section class="text-center" data-animate>
+      <h2 class="text-3xl font-semibold text-slate-900">Model transparency</h2>
+      <p class="mt-3 text-slate-600">Review the model configuration, key features, and performance indicators used to make predictions.</p>
+    </section>
 
-<script>
+    <section class="grid gap-6 lg:grid-cols-2" data-animate>
+      <div class="rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-2xl shadow-rose-200/60">
+        <h3 class="text-lg font-semibold text-slate-900">Technical summary</h3>
+        <div class="mt-4 space-y-3 text-sm text-slate-600">
+          <p><span class="font-semibold text-slate-800">Model name:</span> Rule-based classifier</p>
+          <p><span class="font-semibold text-slate-800">Accuracy:</span> 82%</p>
+          <p><span class="font-semibold text-slate-800">Decision focus:</span> Credit history, income, loan amount</p>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-2xl shadow-rose-200/60">
+        <h3 class="text-lg font-semibold text-slate-900">Feature importance</h3>
+        <p class="mt-2 text-sm text-slate-600">Relative influence of each input feature in the decision logic.</p>
+        <div class="mt-4">
+          <canvas id="featureChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="rounded-3xl border border-slate-200/70 bg-white/80 p-6" data-animate>
+      <h3 class="text-lg font-semibold text-slate-900">Confusion matrix</h3>
+      <p class="mt-2 text-sm text-slate-600">Summary of model decisions across approved and rejected cases.</p>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-rose-100 bg-rose-50/60 p-5 text-center">
+          <p class="text-sm font-semibold text-slate-800">True Approved</p>
+          <p class="mt-3 text-3xl font-semibold text-slate-900">92</p>
+        </div>
+        <div class="rounded-2xl border border-amber-100 bg-amber-50/70 p-5 text-center">
+          <p class="text-sm font-semibold text-slate-800">False Approved</p>
+          <p class="mt-3 text-3xl font-semibold text-slate-900">14</p>
+        </div>
+        <div class="rounded-2xl border border-amber-100 bg-amber-50/70 p-5 text-center">
+          <p class="text-sm font-semibold text-slate-800">False Rejected</p>
+          <p class="mt-3 text-3xl font-semibold text-slate-900">18</p>
+        </div>
+        <div class="rounded-2xl border border-rose-100 bg-rose-50/60 p-5 text-center">
+          <p class="text-sm font-semibold text-slate-800">True Rejected</p>
+          <p class="mt-3 text-3xl font-semibold text-slate-900">65</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script>
   const data = [
     { name: "Credit History", value: 0.42 },
     { name: "Applicant Income", value: 0.21 },
@@ -161,22 +101,24 @@
       datasets: [{
         label: "Importance",
         data: data.map(d => d.value),
-        backgroundColor: "#00b050"
+        backgroundColor: ["#f43f5e", "#fb7185", "#38bdf8", "#facc15", "#fb923c", "#94a3b8"]
       }]
     },
     options: {
       indexAxis: "y",
       plugins: {
         legend: {
-          labels: { color: "#22e083" }
+          labels: { color: "#475569" }
         }
       },
       scales: {
         x: {
-          ticks: { color: "#22e083" }
+          ticks: { color: "#64748b" },
+          grid: { color: "#e2e8f0" }
         },
         y: {
-          ticks: { color: "#22e083" }
+          ticks: { color: "#64748b" },
+          grid: { color: "#e2e8f0" }
         }
       }
     }

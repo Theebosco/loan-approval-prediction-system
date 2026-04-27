@@ -1,4 +1,5 @@
 const API_BASE_URL = "https://loan-approval-prediction-system-production.up.railway.app";
+const API_URL = `${API_BASE_URL}/api/predict`;
 
 const token = localStorage.getItem("token");
 
@@ -52,7 +53,11 @@ form.addEventListener("submit", async event => {
     window.location.href = "result.html";
 
   } catch (error) {
-    message.style.color = "red";
-    message.textContent = error.message;
+    message.style.color = "#b42318";
+    if (error.message === "Failed to fetch") {
+      message.textContent = "We couldn't reach the server. Please try again in a moment.";
+    } else {
+      message.textContent = error.message || "Something went wrong. Please try again.";
+    }
   }
 });
